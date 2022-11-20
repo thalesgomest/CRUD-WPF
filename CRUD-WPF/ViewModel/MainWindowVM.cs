@@ -17,7 +17,8 @@ namespace CRUD_WPF.ViewModel
         public ICommand AddNovaOng { get; private set; }
         public ICommand AddNovoPet { get; private set; }
         public ICommand Remove { get; private set; }
-        public ICommand Edit { get; private set; }
+        public ICommand EditNovaOng { get; private set; }
+        public ICommand EditNovoPet { get; private set; }
 
 
         public MainWindowVM()
@@ -112,7 +113,7 @@ namespace CRUD_WPF.ViewModel
                 }
             });
 
-            Edit = new RelayCommand((object param) =>
+            EditNovaOng = new RelayCommand((object param) =>
             {
                 Ong ongEditada = (Ong)OngSelecionada.Clone();
                 CadastroOng telaCadastroOng = new CadastroOng();
@@ -125,6 +126,24 @@ namespace CRUD_WPF.ViewModel
                     OngSelecionada.Email = ongEditada.Email;
                     OngSelecionada.Telefone = ongEditada.Telefone;
                     OngSelecionada.Endereco = ongEditada.Endereco;
+                }
+            });
+
+            EditNovoPet = new RelayCommand((object param) =>
+            {
+                Pet petEditado = (Pet)PetSelecionado.Clone();
+                CadastroPet telaCadastroPet = new CadastroPet();
+                telaCadastroPet.DataContext = petEditado;
+                telaCadastroPet.ShowDialog();
+
+                if (telaCadastroPet.DialogResult == true)
+                {
+                    PetSelecionado.Nome = petEditado.Nome;
+                    PetSelecionado.Raca = petEditado.Raca;
+                    PetSelecionado.Cor = petEditado.Cor;
+                    PetSelecionado.Sexo = petEditado.Sexo;
+                    PetSelecionado.Porte = petEditado.Porte;
+                    PetSelecionado.Id_ong = petEditado.Id_ong;
                 }
             });
         }

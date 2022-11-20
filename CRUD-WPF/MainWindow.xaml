@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel
             Grid.Row="1"
-            Margin="475,60,55,40"
+            Margin="475,60,20,40"
             Orientation="Vertical">
             <Label
                 Width="250"
@@ -30,9 +30,8 @@
                 FontSize="14"
                 FontStyle="Italic"
                 FontWeight="Bold" />
-
             <ListView
-                Width="240"
+                Width="257"
                 Height="200"
                 d:ItemsSource="{d:SampleData ItemCount=5}"
                 FontFamily="Arial"
@@ -65,12 +64,12 @@
                     Width="70"
                     Margin="0,0,15,0"
                     HorizontalAlignment="Center"
-                    Command="{Binding Edit}"
+                    Command="{Binding EditNovoPet}"
                     Content="Editar"
                     FontFamily="Arial"
                     FontSize="14" />
                 <Button
-                    Width="70"
+                    Width="62"
                     Margin="0,0,15,0"
                     Command="{Binding Remove}"
                     Content="Deletar"
@@ -81,35 +80,34 @@
         </StackPanel>
         <StackPanel
             Grid.Row="1"
-            Margin="78,60,350,40"
+            Margin="30,60,350,40"
             Orientation="Vertical">
-            <StackPanel Orientation="Vertical">
-                <Label
-                    HorizontalAlignment="Left"
-                    Content="ONGS CADASTRADAS"
-                    FontFamily="Bahnschrift Light"
-                    FontSize="14"
-                    FontWeight="Bold" />
-
-                <ListView
-                    Width="352"
-                    Height="200"
-                    d:ItemsSource="{d:SampleData ItemCount=5}"
-                    FontFamily="Arial"
-                    ItemsSource="{Binding ListaOngs}"
-                    SelectedItem="{Binding OngSelecionada}"
-                    SelectionChanged="ListView_SelectionChanged">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Nome}" Header="Nome" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Endereco}" Header="Endereço" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Telefone}" Header="Telefone" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Email" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </StackPanel>
+            <Label
+                Width="395"
+                Height="27"
+                Content="LISTA DE ONGS CADASTRADAS"
+                FontFamily="Bahnschrift Light"
+                FontSize="14"
+                FontStyle="Italic"
+                FontWeight="Bold" />
+            <ListView
+                Width="397"
+                Height="200"
+                d:ItemsSource="{d:SampleData ItemCount=5}"
+                FontFamily="Arial"
+                ItemsSource="{Binding ListaOngs}"
+                SelectedItem="{Binding OngSelecionada}"
+                SelectionChanged="ListView_SelectionChanged_1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Nome}" Header="Nome" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Endereco}" Header="Endereço" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Telefone}" Header="Telefone" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Email" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <StackPanel
                 Width="240"
                 Margin="0,20,0,0"
@@ -125,7 +123,7 @@
                     Width="70"
                     Margin="0,0,15,0"
                     HorizontalAlignment="Center"
-                    Command="{Binding Edit}"
+                    Command="{Binding EditNovaOng}"
                     Content="Editar"
                     FontFamily="Arial"
                     FontSize="14" />
@@ -136,6 +134,7 @@
                     Content="Deletar"
                     FontFamily="Arial"
                     FontSize="14" />
+
             </StackPanel>
         </StackPanel>
 

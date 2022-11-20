@@ -25,13 +25,13 @@
             TextWrapping="Wrap" />
         <Button
             Width="70"
-            Margin="0,489,0,0"
+            Margin="0,519,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Click="Button_Click"
             Content="Salvar" />
         <Label
-            Margin="55,44,0,410"
+            Margin="55,44,0,541"
             HorizontalAlignment="Left"
             Content="Id"
             FontFamily="Arial" />
@@ -45,7 +45,7 @@
             Text="{Binding Nome}"
             TextWrapping="Wrap" />
         <Label
-            Margin="55,104,0,446"
+            Margin="55,104,0,481"
             HorizontalAlignment="Left"
             Content="Nome"
             FontFamily="Arial" />
@@ -56,10 +56,10 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Text="{Binding Nome}"
+            Text="{Binding Raca}"
             TextWrapping="Wrap" />
         <Label
-            Margin="55,164,0,386"
+            Margin="55,164,0,421"
             HorizontalAlignment="Left"
             Content="Raça"
             FontFamily="Arial" />
@@ -70,39 +70,39 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Text="{Binding Raca}"
+            Text="{Binding Cor}"
             TextWrapping="Wrap" />
         <Label
-            Margin="55,224,0,326"
+            Margin="55,224,0,361"
             HorizontalAlignment="Left"
             Content="Cor"
             FontFamily="Arial" />
         <Label
-            Margin="55,284,0,266"
+            Margin="55,284,0,301"
             HorizontalAlignment="Left"
             Content="Sexo"
             FontFamily="Arial" />
         <Label
-            Margin="55,344,0,206"
+            Margin="55,344,0,241"
             HorizontalAlignment="Left"
             Content="Porte"
             FontFamily="Arial" />
         <TextBox
             Width="190"
             Height="30"
-            Margin="57,429,0,0"
+            Margin="57,439,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
             Text="{Binding Id_ong}"
             TextWrapping="Wrap" />
         <Label
-            Margin="57,404,0,146"
+            Margin="59,409,0,171"
             HorizontalAlignment="Left"
             Content="Id Organização"
             FontFamily="Arial" />
         <Label
-            Margin="0,10,0,526"
+            Margin="0,10,0,576"
             HorizontalAlignment="Center"
             HorizontalContentAlignment="Center"
             Content="CADASTRO NOVO PET"
