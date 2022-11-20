@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using CRUD_WPF.ViewModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CRUD_WPF
@@ -11,9 +12,15 @@ namespace CRUD_WPF
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowVM();
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
         }

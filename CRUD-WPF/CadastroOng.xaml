@@ -1,0 +1,116 @@
+﻿<Window
+    x:Class="CRUD_WPF.CadastroOng"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CRUD_WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Cadastro Nova Organização"
+    Width="490"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <TextBox
+            Width="325"
+            Height="35"
+            Margin="85,129,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            FontFamily="Arial"
+            Text="{Binding Nome}"
+            TextWrapping="Wrap" />
+        <TextBox
+            Width="325"
+            Height="35"
+            Margin="85,195,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            FontFamily="Arial"
+            Text="{Binding Endereco}"
+            TextWrapping="Wrap" />
+        <TextBox
+            Width="325"
+            Height="35"
+            Margin="85,261,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            FontFamily="Arial"
+            Text="{Binding Telefone}"
+            TextChanged="TextBox_TextChanged"
+            TextWrapping="Wrap" />
+        <TextBox
+            Width="325"
+            Height="35"
+            Margin="85,327,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            FontFamily="Arial"
+            Text="{Binding Email}"
+            TextWrapping="Wrap" />
+        <TextBox
+            Width="325"
+            Height="35"
+            Margin="85,64,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            FontFamily="Arial"
+            IsEnabled="False"
+            Text="{Binding Id}"
+            TextWrapping="Wrap" />
+        <Label
+            Margin="85,38,0,0"
+            Padding="0,5,5,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Id"
+            FontFamily="Arial" />
+        <Label
+            Margin="85,104,0,0"
+            Padding="0,5,5,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Nome"
+            FontFamily="Arial" />
+        <Label
+            Margin="85,169,0,0"
+            Padding="0,5,5,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Endereço"
+            FontFamily="Arial" />
+        <Label
+            Margin="85,235,0,0"
+            Padding="0,5,5,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Telefone"
+            FontFamily="Arial" />
+        <Label
+            Margin="85,301,0,0"
+            Padding="0,5,5,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Email"
+            FontFamily="Arial" />
+        <Label
+            Margin="0,10,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="CADASTRO NOVA ONG"
+            FontFamily="Bahnschrift Light"
+            FontSize="16" />
+        <Button
+            Width="70"
+            Margin="0,389,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Click="Button_Click"
+            Content="Salvar" />
+
+    </Grid>
+</Window>

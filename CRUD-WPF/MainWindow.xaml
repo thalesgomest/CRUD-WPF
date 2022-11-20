@@ -1,33 +1,128 @@
-﻿<Window x:Class="CRUD_WPF.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CRUD_WPF"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+﻿<Window
+    x:Class="CRUD_WPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CRUD_WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
     <Grid>
-        <StackPanel Margin="475,64,75,40" Orientation="Vertical" Height="330">
-            <Label Content="LISTA DE PETS" FontFamily="Bahnschrift Light" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="215*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="0*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            Grid.Row="1"
+            Margin="475,60,55,40"
+            Orientation="Vertical">
+            <Label
+                Width="250"
+                Height="27"
+                Content="LISTA DE PETS"
+                FontFamily="Bahnschrift Light"
+                FontSize="14"
+                FontStyle="Italic"
+                FontWeight="Bold" />
 
-            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Height="200" Width="250" FontFamily="Arial">
+            <ListView
+                Width="240"
+                Height="200"
+                d:ItemsSource="{d:SampleData ItemCount=5}"
+                FontFamily="Arial"
+                SelectionChanged="ListView_SelectionChanged_1">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn/>
+                        <GridViewColumn />
                     </GridView>
                 </ListView.View>
             </ListView>
+            <StackPanel
+                Width="240"
+                Margin="0,20,0,0"
+                Orientation="Horizontal">
+                <Button
+                    Width="70"
+                    Margin="0,0,15,0"
+                    Content="Adicionar"
+                    FontFamily="Arial"
+                    FontSize="14" />
+                <Button
+                    Width="70"
+                    Margin="0,0,15,0"
+                    HorizontalAlignment="Center"
+                    Content="Editar"
+                    FontFamily="Arial"
+                    FontSize="14" />
+                <Button
+                    Width="70"
+                    Margin="0,0,15,0"
+                    Content="Deletar"
+                    FontFamily="Arial"
+                    FontSize="14" />
+
+            </StackPanel>
         </StackPanel>
-        <StackPanel Margin="75,64,475,40" Orientation="Vertical" Width="250" Height="330">
-            <Label Content="ONGS CADASTRADAS" FontFamily="Bahnschrift Light" FontSize="14" FontWeight="Bold"/>
+        <StackPanel
+            Grid.Row="1"
+            Margin="78,60,350,40"
+            Orientation="Vertical">
+            <Label
+                Content="ONGS CADASTRADAS"
+                FontFamily="Bahnschrift Light"
+                FontSize="14"
+                FontWeight="Bold" />
 
-            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Height="200" Width="250" SelectionChanged="ListView_SelectionChanged" FontFamily="Arial">
+            <ListView
+                Width="351"
+                Height="200"
+                d:ItemsSource="{d:SampleData ItemCount=5}"
+                FontFamily="Arial"
+                ItemsSource="{Binding ListaOngs}"
+                SelectedItem="{Binding OngSelecionada}"
+                SelectionChanged="ListView_SelectionChanged">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Nome}" Header="Nome" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Endereco}" Header="Endereço" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Telefone}" Header="Telefone" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Email" />
                     </GridView>
                 </ListView.View>
             </ListView>
+            <StackPanel
+                Width="240"
+                Margin="0,20,0,0"
+                Orientation="Horizontal">
+                <Button
+                    Width="70"
+                    Margin="0,0,15,0"
+                    Command="{Binding Add}"
+                    Content="Adicionar"
+                    FontFamily="Arial"
+                    FontSize="14" />
+                <Button
+                    Width="70"
+                    Margin="0,0,15,0"
+                    HorizontalAlignment="Center"
+                    Content="Editar"
+                    FontFamily="Arial"
+                    FontSize="14" />
+                <Button
+                    Width="70"
+                    Margin="0,0,15,0"
+                    Command="{Binding Remove}"
+                    Content="Deletar"
+                    FontFamily="Arial"
+                    FontSize="14" />
+            </StackPanel>
         </StackPanel>
 
     </Grid>
