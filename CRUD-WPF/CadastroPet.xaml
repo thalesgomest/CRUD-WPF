@@ -1,0 +1,131 @@
+﻿<Window
+    x:Class="CRUD_WPF.CadastroPet"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CRUD_WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Cadastro Novo Pet"
+    Width="400"
+    Height="610"
+    mc:Ignorable="d">
+    <Grid
+        Width="400"
+        Margin="0,0,0,-46"
+        HorizontalAlignment="Center">
+        <TextBox
+            Width="190"
+            Height="30"
+            Margin="55,69,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            IsEnabled="False"
+            Text="{Binding Id}"
+            TextWrapping="Wrap" />
+        <Button
+            Width="70"
+            Margin="0,489,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Click="Button_Click"
+            Content="Salvar" />
+        <Label
+            Margin="55,44,0,410"
+            HorizontalAlignment="Left"
+            Content="Id"
+            FontFamily="Arial" />
+        <TextBox
+            Width="190"
+            Height="30"
+            Margin="55,129,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Text="{Binding Nome}"
+            TextWrapping="Wrap" />
+        <Label
+            Margin="55,104,0,446"
+            HorizontalAlignment="Left"
+            Content="Nome"
+            FontFamily="Arial" />
+        <TextBox
+            Width="190"
+            Height="30"
+            Margin="55,189,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Text="{Binding Nome}"
+            TextWrapping="Wrap" />
+        <Label
+            Margin="55,164,0,386"
+            HorizontalAlignment="Left"
+            Content="Raça"
+            FontFamily="Arial" />
+        <TextBox
+            Width="190"
+            Height="30"
+            Margin="55,249,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Text="{Binding Raca}"
+            TextWrapping="Wrap" />
+        <Label
+            Margin="55,224,0,326"
+            HorizontalAlignment="Left"
+            Content="Cor"
+            FontFamily="Arial" />
+        <Label
+            Margin="55,284,0,266"
+            HorizontalAlignment="Left"
+            Content="Sexo"
+            FontFamily="Arial" />
+        <Label
+            Margin="55,344,0,206"
+            HorizontalAlignment="Left"
+            Content="Porte"
+            FontFamily="Arial" />
+        <TextBox
+            Width="190"
+            Height="30"
+            Margin="57,429,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Text="{Binding Id_ong}"
+            TextWrapping="Wrap" />
+        <Label
+            Margin="57,404,0,146"
+            HorizontalAlignment="Left"
+            Content="Id Organização"
+            FontFamily="Arial" />
+        <Label
+            Margin="0,10,0,526"
+            HorizontalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Content="CADASTRO NOVO PET"
+            FontFamily="Bahnschrift Light"
+            FontSize="14" />
+        <ComboBox
+            x:Name="SexoComboBox"
+            Width="190"
+            Height="30"
+            Margin="57,309,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Text="{Binding Sexo}" />
+        <ComboBox
+            x:Name="PorteComboBox"
+            Width="190"
+            Height="30"
+            Margin="57,369,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Text="{Binding Porte}" />
+
+    </Grid>
+</Window>

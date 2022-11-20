@@ -36,10 +36,17 @@
                 Height="200"
                 d:ItemsSource="{d:SampleData ItemCount=5}"
                 FontFamily="Arial"
+                ItemsSource="{Binding Path=ListaPets}"
+                SelectedItem="{Binding PetSelecionado}"
                 SelectionChanged="ListView_SelectionChanged_1">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn />
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Nome}" Header="Nome" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Raca}" Header="Raça" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Cor}" Header="Cor" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Sexo}" Header="Sexo" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Id_ong}" Header="Id ONG" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -50,6 +57,7 @@
                 <Button
                     Width="70"
                     Margin="0,0,15,0"
+                    Command="{Binding AddNovoPet}"
                     Content="Adicionar"
                     FontFamily="Arial"
                     FontSize="14" />
@@ -57,12 +65,14 @@
                     Width="70"
                     Margin="0,0,15,0"
                     HorizontalAlignment="Center"
+                    Command="{Binding Edit}"
                     Content="Editar"
                     FontFamily="Arial"
                     FontSize="14" />
                 <Button
                     Width="70"
                     Margin="0,0,15,0"
+                    Command="{Binding Remove}"
                     Content="Deletar"
                     FontFamily="Arial"
                     FontSize="14" />
@@ -73,30 +83,33 @@
             Grid.Row="1"
             Margin="78,60,350,40"
             Orientation="Vertical">
-            <Label
-                Content="ONGS CADASTRADAS"
-                FontFamily="Bahnschrift Light"
-                FontSize="14"
-                FontWeight="Bold" />
+            <StackPanel Orientation="Vertical">
+                <Label
+                    HorizontalAlignment="Left"
+                    Content="ONGS CADASTRADAS"
+                    FontFamily="Bahnschrift Light"
+                    FontSize="14"
+                    FontWeight="Bold" />
 
-            <ListView
-                Width="351"
-                Height="200"
-                d:ItemsSource="{d:SampleData ItemCount=5}"
-                FontFamily="Arial"
-                ItemsSource="{Binding ListaOngs}"
-                SelectedItem="{Binding OngSelecionada}"
-                SelectionChanged="ListView_SelectionChanged">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Nome}" Header="Nome" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Endereco}" Header="Endereço" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Telefone}" Header="Telefone" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Email" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                <ListView
+                    Width="352"
+                    Height="200"
+                    d:ItemsSource="{d:SampleData ItemCount=5}"
+                    FontFamily="Arial"
+                    ItemsSource="{Binding ListaOngs}"
+                    SelectedItem="{Binding OngSelecionada}"
+                    SelectionChanged="ListView_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Nome}" Header="Nome" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Endereco}" Header="Endereço" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Telefone}" Header="Telefone" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Email" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
             <StackPanel
                 Width="240"
                 Margin="0,20,0,0"
@@ -104,7 +117,7 @@
                 <Button
                     Width="70"
                     Margin="0,0,15,0"
-                    Command="{Binding Add}"
+                    Command="{Binding AddNovaOng}"
                     Content="Adicionar"
                     FontFamily="Arial"
                     FontSize="14" />
@@ -112,6 +125,7 @@
                     Width="70"
                     Margin="0,0,15,0"
                     HorizontalAlignment="Center"
+                    Command="{Binding Edit}"
                     Content="Editar"
                     FontFamily="Arial"
                     FontSize="14" />

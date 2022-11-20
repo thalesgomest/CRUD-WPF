@@ -1,6 +1,8 @@
-﻿namespace CRUD_WPF.Model
+﻿using System;
+
+namespace CRUD_WPF.Model
 {
-    public class Ong
+    public class Ong : BaseNotifyPropertyChanged, ICloneable
     {
         private int id;
         private string nome;
@@ -21,10 +23,15 @@
             this.email = email;
         }
 
-        public int Id { get => id; set => id = value; }
-        public string Nome { get => nome; set => nome = value; }
-        public string Endereco { get => endereco; set => endereco = value; }
-        public string Telefone { get => telefone; set => telefone = value; }
-        public string Email { get => email; set => email = value; }
+        public int Id { get => id; set { SetField(ref id, value); } }
+        public string Nome { get => nome; set { SetField(ref nome, value); } }
+        public string Endereco { get => endereco; set { SetField(ref endereco, value); } }
+        public string Telefone { get => telefone; set { SetField(ref telefone, value); } }
+        public string Email { get => email; set { SetField(ref email, value); } }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

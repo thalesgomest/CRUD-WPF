@@ -1,6 +1,8 @@
-﻿namespace CRUD_WPF.Model
+﻿using System;
+
+namespace CRUD_WPF.Model
 {
-    public class Pet
+    public class Pet : BaseNotifyPropertyChanged, ICloneable
     {
         private int id;
         private string nome;
@@ -25,12 +27,17 @@
             this.id_ong = id_ong;
         }
 
-        public int Id { get => id; set => id = value; }
-        public string Nome { get => nome; set => nome = value; }
-        public string Raca { get => raca; set => raca = value; }
-        public string Cor { get => cor; set => cor = value; }
-        public Sexo Sexo { get => sexo; set => sexo = value; }
-        public Porte Porte { get => porte; set => porte = value; }
-        public int Id_ong { get => id_ong; set => id_ong = value; }
+        public int Id { get => id; set { SetField(ref id, value); } }
+        public string Nome { get => nome; set { SetField(ref nome, value); } }
+        public string Raca { get => raca; set { SetField(ref raca, value); } }
+        public string Cor { get => cor; set { SetField(ref cor, value); } }
+        public Sexo Sexo { get => sexo; set { SetField(ref sexo, value); } }
+        public Porte Porte { get => porte; set { SetField(ref porte, value); } }
+        public int Id_ong { get => id_ong; set { SetField(ref id_ong, value); } }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }
