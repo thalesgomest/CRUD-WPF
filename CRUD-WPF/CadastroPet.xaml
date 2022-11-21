@@ -126,6 +126,5 @@
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
             Text="{Binding Porte}" />
-
     </Grid>
 </Window>

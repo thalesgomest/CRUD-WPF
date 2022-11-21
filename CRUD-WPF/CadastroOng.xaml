@@ -31,6 +31,7 @@
             Text="{Binding Endereco}"
             TextWrapping="Wrap" />
         <TextBox
+            Name="NumberTextBox"
             Width="325"
             Height="35"
             Margin="85,261,0,0"
@@ -38,6 +39,8 @@
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
             FontFamily="Arial"
+            MaxLength="11"
+            PreviewTextInput="NumberValidationTextBox"
             Text="{Binding Telefone}"
             TextChanged="TextBox_TextChanged"
             TextWrapping="Wrap" />

@@ -13,7 +13,6 @@ namespace CRUD_WPF.ViewModel
         public ObservableCollection<Pet> ListaPets { get; private set; }
         public Ong OngSelecionada { get; set; }
         public Pet PetSelecionado { get; set; }
-
         public ICommand AddNovaOng { get; private set; }
         public ICommand AddNovoPet { get; private set; }
         public ICommand Remover { get; private set; }
@@ -93,7 +92,7 @@ namespace CRUD_WPF.ViewModel
             {
                 Pet novoPet = new Pet();
                 int maxId = 0;
-                if (ListaOngs.Count > 0)
+                if (ListaPets.Count > 0)
                 {
                     maxId = ListaPets.Last().Id;
                 }
@@ -160,7 +159,19 @@ namespace CRUD_WPF.ViewModel
                 }
             });
         }
-        string AplicarMascaraTelefone(string strNumero)
+        // filtrar a lista de pets de acordo com a ong selecionada
+        public void FiltrarListaPets()
+        {
+            if (OngSelecionada != null)
+            {
+                ListaPets = new ObservableCollection<Pet>(ListaPets.Where(p => p.Id_ong == OngSelecionada.Id));
+            }
+            else
+            {
+                ListaPets = new ObservableCollection<Pet>(ListaPets);
+            }
+        }
+        public string AplicarMascaraTelefone(string strNumero)
         {
             // por omissão tem 10 ou menos dígitos
             string strMascara = "{0:(00) 0000-0000}";

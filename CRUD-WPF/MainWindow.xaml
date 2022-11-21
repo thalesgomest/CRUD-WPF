@@ -35,7 +35,7 @@
                 Height="200"
                 d:ItemsSource="{d:SampleData ItemCount=5}"
                 FontFamily="Arial"
-                ItemsSource="{Binding Path=ListaPets}"
+                ItemsSource="{Binding Path=ListaPets, UpdateSourceTrigger=PropertyChanged}"
                 SelectedItem="{Binding PetSelecionado}"
                 SelectionChanged="ListView_SelectionChanged_1">
                 <ListView.View>
@@ -137,6 +137,6 @@
 
             </StackPanel>
         </StackPanel>
-
     </Grid>
 </Window>
+
