@@ -1,4 +1,5 @@
 ﻿using CRUD_WPF.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -13,12 +14,11 @@ namespace CRUD_WPF.ViewModel
         public Ong OngSelecionada { get; set; }
         public Pet PetSelecionado { get; set; }
 
-
         public ICommand AddNovaOng { get; private set; }
         public ICommand AddNovoPet { get; private set; }
-        public ICommand Remove { get; private set; }
-        public ICommand EditNovaOng { get; private set; }
-        public ICommand EditNovoPet { get; private set; }
+        public ICommand Remover { get; private set; }
+        public ICommand EditOng { get; private set; }
+        public ICommand EditPet { get; private set; }
 
 
         public MainWindowVM()
@@ -29,7 +29,7 @@ namespace CRUD_WPF.ViewModel
                     Id = 1,
                     Nome = "Instituto Luisa Mel",
                     Email = "instituto@ong.com",
-                    Telefone = "999999999",
+                    Telefone = AplicarMascaraTelefone("35999160995"),
                     Endereco = "Lorem ipsum dolor sit amet"
                 },
                   new Ong()
@@ -37,7 +37,7 @@ namespace CRUD_WPF.ViewModel
                     Id = 2,
                     Nome = "Instituto Luisa Mel",
                     Email = "instituto@ong.com",
-                    Telefone = "999999999",
+                    Telefone = AplicarMascaraTelefone("35999160995"),
                     Endereco = "Lorem ipsum dolor sit amet"
                 }
             };
@@ -70,11 +70,14 @@ namespace CRUD_WPF.ViewModel
 
         private void IniciaComandos()
         {
-
             AddNovaOng = new RelayCommand((object param) =>
             {
                 Ong novaOng = new Ong();
-                int maxId = ListaOngs.Last().Id;
+                int maxId = 0;
+                if (ListaOngs.Count > 0)
+                {
+                    maxId = ListaOngs.Last().Id;
+                }
                 novaOng.Id = maxId + 1;
                 CadastroOng telaCadastroOng = new CadastroOng();
                 telaCadastroOng.DataContext = novaOng;
@@ -89,7 +92,11 @@ namespace CRUD_WPF.ViewModel
             AddNovoPet = new RelayCommand((object param) =>
             {
                 Pet novoPet = new Pet();
-                int maxId = ListaPets.Last().Id;
+                int maxId = 0;
+                if (ListaOngs.Count > 0)
+                {
+                    maxId = ListaPets.Last().Id;
+                }
                 novoPet.Id = maxId + 1;
                 CadastroPet telaCadastroPet = new CadastroPet();
                 telaCadastroPet.DataContext = novoPet;
@@ -101,7 +108,7 @@ namespace CRUD_WPF.ViewModel
                 }
             });
 
-            Remove = new RelayCommand((object param) =>
+            Remover = new RelayCommand((object param) =>
             {
                 if (OngSelecionada != null && PetSelecionado == null)
                 {
@@ -113,39 +120,57 @@ namespace CRUD_WPF.ViewModel
                 }
             });
 
-            EditNovaOng = new RelayCommand((object param) =>
+            EditOng = new RelayCommand((object param) =>
             {
-                Ong ongEditada = (Ong)OngSelecionada.Clone();
-                CadastroOng telaCadastroOng = new CadastroOng();
-                telaCadastroOng.DataContext = ongEditada;
-                telaCadastroOng.ShowDialog();
-
-                if (telaCadastroOng.DialogResult == true)
+                if (OngSelecionada != null)
                 {
-                    OngSelecionada.Nome = ongEditada.Nome;
-                    OngSelecionada.Email = ongEditada.Email;
-                    OngSelecionada.Telefone = ongEditada.Telefone;
-                    OngSelecionada.Endereco = ongEditada.Endereco;
+                    Ong ongEditada = (Ong)OngSelecionada.Clone();
+                    CadastroOng telaCadastroOng = new CadastroOng();
+                    telaCadastroOng.DataContext = ongEditada;
+                    telaCadastroOng.ShowDialog();
+
+                    if (telaCadastroOng.DialogResult == true)
+                    {
+                        OngSelecionada.Nome = ongEditada.Nome;
+                        OngSelecionada.Email = ongEditada.Email;
+                        OngSelecionada.Telefone = AplicarMascaraTelefone(ongEditada.Telefone);
+                        OngSelecionada.Endereco = ongEditada.Endereco;
+                    }
                 }
             });
 
-            EditNovoPet = new RelayCommand((object param) =>
+            EditPet = new RelayCommand((object param) =>
             {
-                Pet petEditado = (Pet)PetSelecionado.Clone();
-                CadastroPet telaCadastroPet = new CadastroPet();
-                telaCadastroPet.DataContext = petEditado;
-                telaCadastroPet.ShowDialog();
-
-                if (telaCadastroPet.DialogResult == true)
+                if (PetSelecionado != null)
                 {
-                    PetSelecionado.Nome = petEditado.Nome;
-                    PetSelecionado.Raca = petEditado.Raca;
-                    PetSelecionado.Cor = petEditado.Cor;
-                    PetSelecionado.Sexo = petEditado.Sexo;
-                    PetSelecionado.Porte = petEditado.Porte;
-                    PetSelecionado.Id_ong = petEditado.Id_ong;
+                    Pet petEditado = (Pet)PetSelecionado.Clone();
+                    CadastroPet telaCadastroPet = new CadastroPet();
+                    telaCadastroPet.DataContext = petEditado;
+                    telaCadastroPet.ShowDialog();
+
+                    if (telaCadastroPet.DialogResult == true)
+                    {
+                        PetSelecionado.Nome = petEditado.Nome;
+                        PetSelecionado.Raca = petEditado.Raca;
+                        PetSelecionado.Cor = petEditado.Cor;
+                        PetSelecionado.Sexo = petEditado.Sexo;
+                        PetSelecionado.Porte = petEditado.Porte;
+                        PetSelecionado.Id_ong = petEditado.Id_ong;
+                    }
                 }
             });
+        }
+        string AplicarMascaraTelefone(string strNumero)
+        {
+            // por omissão tem 10 ou menos dígitos
+            string strMascara = "{0:(00) 0000-0000}";
+            // converter o texto em número
+            long lngNumero = Convert.ToInt64(strNumero);
+
+            if (strNumero.Length == 11)
+                strMascara = "{0:(00) 00000-0000}";
+
+            return string.Format(strMascara, lngNumero);
         }
     }
 }

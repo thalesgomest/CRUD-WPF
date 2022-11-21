@@ -64,14 +64,14 @@
                     Width="70"
                     Margin="0,0,15,0"
                     HorizontalAlignment="Center"
-                    Command="{Binding EditNovoPet}"
+                    Command="{Binding EditPet}"
                     Content="Editar"
                     FontFamily="Arial"
                     FontSize="14" />
                 <Button
                     Width="62"
                     Margin="0,0,15,0"
-                    Command="{Binding Remove}"
+                    Command="{Binding Remover}"
                     Content="Deletar"
                     FontFamily="Arial"
                     FontSize="14" />
@@ -123,14 +123,14 @@
                     Width="70"
                     Margin="0,0,15,0"
                     HorizontalAlignment="Center"
-                    Command="{Binding EditNovaOng}"
+                    Command="{Binding EditOng}"
                     Content="Editar"
                     FontFamily="Arial"
                     FontSize="14" />
                 <Button
                     Width="70"
                     Margin="0,0,15,0"
-                    Command="{Binding Remove}"
+                    Command="{Binding Remover}"
                     Content="Deletar"
                     FontFamily="Arial"
                     FontSize="14" />
