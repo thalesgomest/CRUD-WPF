@@ -113,7 +113,8 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Click="Button_Click"
-            Content="Salvar" />
+            Content="Salvar"
+            FontSize="14" />
 
     </Grid>
 </Window>

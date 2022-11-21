@@ -6,12 +6,24 @@ using System.Windows.Input;
 
 namespace CRUD_WPF.ViewModel
 {
-    public class MainWindowVM
+    public class MainWindowVM : BaseNotifyPropertyChanged
     {
+        private Ong _ongSelecionada;
+        private ObservableCollection<Pet> ListaPetBase;
+        public ObservableCollection<Pet> ListaPets { get; set; }
         public ObservableCollection<Ong> ListaOngs { get; private set; }
 
-        public ObservableCollection<Pet> ListaPets { get; private set; }
-        public Ong OngSelecionada { get; set; }
+        public Ong OngSelecionada
+        {
+            get => _ongSelecionada;
+            set
+            {
+                _ongSelecionada = value;
+                if (OngSelecionada != null)
+                    ListaPets = new ObservableCollection<Pet>(ListaPetBase.Where(x => x.Id_ong == OngSelecionada.Id));
+                RaisePropertyChanged(nameof(ListaPets));
+            }
+        }
         public Pet PetSelecionado { get; set; }
         public ICommand AddNovaOng { get; private set; }
         public ICommand AddNovoPet { get; private set; }
@@ -34,36 +46,35 @@ namespace CRUD_WPF.ViewModel
                   new Ong()
                 {
                     Id = 2,
-                    Nome = "Instituto Luisa Mel",
+                    Nome = "Instituto Amanda Breda",
                     Email = "instituto@ong.com",
-                    Telefone = AplicarMascaraTelefone("35999160995"),
+                    Telefone = AplicarMascaraTelefone("77777777777"),
                     Endereco = "Lorem ipsum dolor sit amet"
                 }
             };
 
-            ListaPets = new ObservableCollection<Pet>() {
-                    new Pet()
-                    {
-                        Id = 1,
-                        Nome = "Rex",
-                        Raca = "SRD",
-                        Cor = "Preto",
-                        Sexo = Sexo.Macho,
-                        Porte = Porte.Médio,
-                        Id_ong = 1
-                    },
-                    new Pet()
-                    {
-                        Id = 2,
-                        Nome = "Romeu",
-                        Raca = "Shitzu",
-                        Cor = "Cinza",
-                        Sexo = Sexo.Macho,
-                        Porte = Porte.Pequeno,
-                        Id_ong = 1
-                    }
-                };
-
+            ListaPetBase = new ObservableCollection<Pet>() {
+                     new Pet()
+                     {
+                         Id = 1,
+                         Nome = "Rex",
+                         Raca = "SRD",
+                         Cor = "Preto",
+                         Sexo = Sexo.Macho,
+                         Porte = Porte.Médio,
+                         Id_ong = 1
+                     },
+                     new Pet()
+                     {
+                         Id = 2,
+                         Nome = "Romeu",
+                         Raca = "Shitzu",
+                         Cor = "Cinza",
+                         Sexo = Sexo.Macho,
+                         Porte = Porte.Pequeno,
+                         Id_ong = 2
+                     }
+                 };
             IniciaComandos();
         }
 
@@ -84,6 +95,7 @@ namespace CRUD_WPF.ViewModel
 
                 if (telaCadastroOng.DialogResult == true)
                 {
+                    novaOng.Telefone = AplicarMascaraTelefone(novaOng.Telefone);
                     ListaOngs.Add(novaOng);
                 }
             });
@@ -92,11 +104,13 @@ namespace CRUD_WPF.ViewModel
             {
                 Pet novoPet = new Pet();
                 int maxId = 0;
-                if (ListaPets.Count > 0)
+                int idOngSelecionada = OngSelecionada.Id;
+                if (ListaPetBase.Count > 0)
                 {
-                    maxId = ListaPets.Last().Id;
+                    maxId = ListaPetBase.Last().Id;
                 }
                 novoPet.Id = maxId + 1;
+                novoPet.Id_ong = idOngSelecionada;
                 CadastroPet telaCadastroPet = new CadastroPet();
                 telaCadastroPet.DataContext = novoPet;
                 telaCadastroPet.ShowDialog();
@@ -104,6 +118,7 @@ namespace CRUD_WPF.ViewModel
                 if (telaCadastroPet.DialogResult == true)
                 {
                     ListaPets.Add(novoPet);
+                    ListaPetBase.Add(novoPet);
                 }
             });
 
@@ -116,6 +131,7 @@ namespace CRUD_WPF.ViewModel
                 else if (PetSelecionado != null)
                 {
                     ListaPets.Remove(PetSelecionado);
+                    ListaPetBase.Remove(PetSelecionado);
                 }
             });
 
@@ -159,18 +175,8 @@ namespace CRUD_WPF.ViewModel
                 }
             });
         }
-        // filtrar a lista de pets de acordo com a ong selecionada
-        public void FiltrarListaPets()
-        {
-            if (OngSelecionada != null)
-            {
-                ListaPets = new ObservableCollection<Pet>(ListaPets.Where(p => p.Id_ong == OngSelecionada.Id));
-            }
-            else
-            {
-                ListaPets = new ObservableCollection<Pet>(ListaPets);
-            }
-        }
+        // gerar lista de pets apenas com os pets da ong selecionada
+
         public string AplicarMascaraTelefone(string strNumero)
         {
             // por omissão tem 10 ou menos dígitos

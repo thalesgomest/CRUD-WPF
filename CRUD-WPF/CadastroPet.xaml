@@ -29,7 +29,8 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Click="Button_Click"
-            Content="Salvar" />
+            Content="Salvar"
+            FontSize="14" />
         <Label
             Margin="55,44,0,541"
             HorizontalAlignment="Left"
@@ -94,6 +95,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
+            IsEnabled="False"
             Text="{Binding Id_ong}"
             TextWrapping="Wrap" />
         <Label

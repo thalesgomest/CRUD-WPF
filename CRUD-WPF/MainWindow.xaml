@@ -31,11 +31,12 @@
                 FontStyle="Italic"
                 FontWeight="Bold" />
             <ListView
+                x:Name="ListaPets"
                 Width="257"
                 Height="200"
                 d:ItemsSource="{d:SampleData ItemCount=5}"
                 FontFamily="Arial"
-                ItemsSource="{Binding Path=ListaPets, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding ListaPets}"
                 SelectedItem="{Binding PetSelecionado}"
                 SelectionChanged="ListView_SelectionChanged_1">
                 <ListView.View>
@@ -50,14 +51,16 @@
                 </ListView.View>
             </ListView>
             <StackPanel
-                Width="240"
+                Width="246"
                 Margin="0,20,0,0"
                 Orientation="Horizontal">
                 <Button
                     Width="70"
+                    Height="30"
                     Margin="0,0,15,0"
                     Command="{Binding AddNovoPet}"
                     Content="Adicionar"
+                    Cursor="Hand"
                     FontFamily="Arial"
                     FontSize="14" />
                 <Button
@@ -66,13 +69,15 @@
                     HorizontalAlignment="Center"
                     Command="{Binding EditPet}"
                     Content="Editar"
+                    Cursor="Hand"
                     FontFamily="Arial"
                     FontSize="14" />
                 <Button
-                    Width="62"
+                    Width="70"
                     Margin="0,0,15,0"
                     Command="{Binding Remover}"
                     Content="Deletar"
+                    Cursor="Hand"
                     FontFamily="Arial"
                     FontSize="14" />
 
@@ -114,9 +119,11 @@
                 Orientation="Horizontal">
                 <Button
                     Width="70"
+                    Height="30"
                     Margin="0,0,15,0"
                     Command="{Binding AddNovaOng}"
                     Content="Adicionar"
+                    Cursor="Hand"
                     FontFamily="Arial"
                     FontSize="14" />
                 <Button
@@ -125,6 +132,7 @@
                     HorizontalAlignment="Center"
                     Command="{Binding EditOng}"
                     Content="Editar"
+                    Cursor="Hand"
                     FontFamily="Arial"
                     FontSize="14" />
                 <Button
@@ -132,9 +140,9 @@
                     Margin="0,0,15,0"
                     Command="{Binding Remover}"
                     Content="Deletar"
+                    Cursor="Hand"
                     FontFamily="Arial"
                     FontSize="14" />
-
             </StackPanel>
         </StackPanel>
     </Grid>

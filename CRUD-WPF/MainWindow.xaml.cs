@@ -13,12 +13,6 @@ namespace CRUD_WPF
         {
             InitializeComponent();
             DataContext = new MainWindowVM();
-
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void ListView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
