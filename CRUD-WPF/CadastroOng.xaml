@@ -54,24 +54,6 @@
             FontFamily="Arial"
             Text="{Binding Email}"
             TextWrapping="Wrap" />
-        <TextBox
-            Width="325"
-            Height="35"
-            Margin="85,64,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            VerticalContentAlignment="Center"
-            FontFamily="Arial"
-            IsEnabled="False"
-            Text="{Binding Id}"
-            TextWrapping="Wrap" />
-        <Label
-            Margin="85,38,0,0"
-            Padding="0,5,5,5"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Id"
-            FontFamily="Arial" />
         <Label
             Margin="85,104,0,0"
             Padding="0,5,5,5"

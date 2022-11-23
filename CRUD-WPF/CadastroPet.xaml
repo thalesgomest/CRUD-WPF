@@ -13,16 +13,6 @@
         Width="400"
         Margin="0,0,0,-46"
         HorizontalAlignment="Center">
-        <TextBox
-            Width="190"
-            Height="30"
-            Margin="55,69,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            VerticalContentAlignment="Center"
-            IsEnabled="False"
-            Text="{Binding Id}"
-            TextWrapping="Wrap" />
         <Button
             Width="70"
             Margin="0,519,0,0"
@@ -31,11 +21,6 @@
             Click="Button_Click"
             Content="Salvar"
             FontSize="14" />
-        <Label
-            Margin="55,44,0,541"
-            HorizontalAlignment="Left"
-            Content="Id"
-            FontFamily="Arial" />
         <TextBox
             Width="190"
             Height="30"

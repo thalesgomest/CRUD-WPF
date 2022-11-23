@@ -46,7 +46,8 @@
                         <GridViewColumn DisplayMemberBinding="{Binding Raca}" Header="Raça" />
                         <GridViewColumn DisplayMemberBinding="{Binding Cor}" Header="Cor" />
                         <GridViewColumn DisplayMemberBinding="{Binding Sexo}" Header="Sexo" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Id_ong}" Header="Id ONG" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Porte}" Header="Porte" />
+                        <!-- <GridViewColumn DisplayMemberBinding="{Binding Id_ong}" Header="Id ONG" /> -->
                     </GridView>
                 </ListView.View>
             </ListView>
