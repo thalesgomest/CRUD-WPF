@@ -24,42 +24,56 @@ namespace CRUD_WPF.Model.Databse
             cmd.Connection = conn;
         }
 
-        public IEnumerable<Ong> BuscaOngs()
+        public List<Ong> BuscaOngs()
         {
             _query = "SELECT * FROM ongs";
             cmd.CommandText = _query;
+            List<Ong> ongs = new List<Ong>();
+            Ong NovaOng;
             Conectar();
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                yield return new Ong
-                {
-                    Id = reader.GetInt32(0),
-                    Nome = reader.GetString(1),
-                    Endereco = reader.GetString(2),
-                    Telefone = reader.GetString(3),
-                    Email = reader.GetString(4)
-                };
+                NovaOng = new Ong();
+                NovaOng.Id = reader.GetInt32(0);
+                NovaOng.Nome = reader.GetString(1);
+                NovaOng.Endereco = reader.GetString(2);
+                NovaOng.Telefone = reader.GetString(3);
+                NovaOng.Email = reader.GetString(4);
+                ongs.Add(NovaOng);
             }
             Desconectar();
+            return ongs;
         }
-        public IEnumerable<Pet> BuscaPets(Ong ongSelecionada)
+        public List<Pet> BuscaPets(Ong ongSelecionada)
         {
             _query = $"SELECT * FROM pets WHERE id_ong = {ongSelecionada.Id}";
             cmd.CommandText = _query;
+            List<Pet> pets = new List<Pet>();
+            Pet NovoPet;
             Conectar();
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                yield return new Pet
-                {
-                    Id = reader.GetInt32(0),
-                    Nome = reader.GetString(1),
-                    Raca = reader.GetString(2),
-                    Cor = reader.GetString(3),
-                };
+                NovoPet = new Pet();
+                NovoPet.Id = reader.GetInt32(0);
+                NovoPet.Nome = reader.GetString(1);
+                NovoPet.Raca = reader.GetString(2);
+                NovoPet.Cor = reader.GetString(3);
+                if (reader.GetString(4) == "Macho")
+                    NovoPet.Sexo = Sexo.Macho;
+                else NovoPet.Sexo = Sexo.Fêmea;
+                if (reader.GetString(5) == "Pequeno")
+                    NovoPet.Porte = Porte.Pequeno;
+                else if (reader.GetString(5) == "Médio")
+                    NovoPet.Porte = Porte.Médio;
+                else
+                    NovoPet.Porte = Porte.Grande;
+                NovoPet.Id_ong = reader.GetInt32(6);
+                pets.Add(NovoPet);
             }
             Desconectar();
+            return pets;
         }
 
         public void CadastraOng(Ong ong)
